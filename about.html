@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a162850df0.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Innovate India</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #bg-image {
+            background-image: url(/images/homebg.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+            height: 700px;
+        }
+
+        @media (max-width: 992px) {
+            #bg-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 402px) {
+            #bg-image {
+                height: 300px;
+            }
+        }
+
+        .container2 {
+            position: relative;
+            z-index: -1;
+            width: 100%;
+            margin: auto;
+        }
+
+        .btn-ui {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 13rem;
+            overflow: hidden;
+            height: 3rem;
+            background-size: 300% 300%;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+            transition: 0.5s;
+            animation: gradient_301 5s ease infinite;
+            border: double 4px transparent;
+            background-image: linear-gradient(#212121, #212121),
+                linear-gradient(137.48deg, #353329 10%, #474545 45%, #696374 67%,
+                    #726c6c 87%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            position: relative;
+            z-index: 0;
+        }
+
+        #container-stars {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: 0.5s;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+        }
+
+        strong {
+            z-index: 2;
+            font-family: 'Avalors Personal Use';
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            /* text-shadow: 0 0 4px white; */
+        }
+
+        #glow {
+            position: absolute;
+            display: flex;
+            width: 12rem;
+        }
+
+        .circle {
+            width: 100%;
+            height: 30px;
+            filter: blur(2rem);
+            animation: pulse_3011 4s infinite;
+            z-index: -1;
+        }
+
+        .circle:nth-of-type(1) {
+            background: black;
+        }
+
+        .circle:nth-of-type(2) {
+            background: black;
+        }
+
+        .btn-ui:hover #container-stars {
+            z-index: 1;
+            background-color: #212121;
+        }
+
+        .btn-ui:hover {
+            transform: scale(1.1)
+        }
+
+        .btn-ui:active {
+            /* border: double 4px #FE53BB; */
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: none;
+        }
+
+        /* .btn:active .circle {
+            background: #FE53BB;
+        } */
+
+        #stars {
+            position: relative;
+            background: transparent;
+            width: 200rem;
+            height: 200rem;
+        }
+
+        #stars::after {
+            content: "";
+            position: absolute;
+            top: -10rem;
+            left: -100rem;
+            width: 100%;
+            height: 100%;
+            animation: animStarRotate 90s linear infinite;
+        }
+
+        #stars::after {
+            background-image: radial-gradient(#ffffff 1px, transparent 1%);
+            background-size: 50px 50px;
+        }
+
+        #stars::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 170%;
+            height: 500%;
+            animation: animStar 60s linear infinite;
+        }
+
+        #stars::before {
+            background-image: radial-gradient(#ffffff 1px, transparent 1%);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        @keyframes animStar {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-135rem);
+            }
+        }
+
+        @keyframes animStarRotate {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes gradient_301 {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse_3011 {
+            0% {
+                transform: scale(0.75);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                transform: scale(0.75);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="container1" style="background-color: black;">
+        <header class="header pt-1">
+            <img src="/images/logo.jpg" alt="Logo" class="logo text-gray-100 rounded m-2"
+                style="height: 50px; width: 250px;" />
+            <nav class="md:ml-auto block items-center justify-center navbar pt-3">
+                <ul class="navbar-list">
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/">Home </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/service.html">Services </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/blog.html">Blog </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/contact.html">Contact Us </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/about.html">About Us</a>
+                </ul>
+            </nav>
+            <div class="mobile-navbar-btn">
+                <ion-icon name="menu-outline" class="mobile-nav-icon" style="color: white;"></ion-icon>
+                <ion-icon name="close-outline" class="mobile-nav-icon" style="color: white;"></ion-icon>
+            </div>
+        </header>
+    </div>
+    <div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-dark"><i
+                class="fa-solid fa-up-long "></i></button>
+    </div>
+    <div class="container2 text-center w-full my-5">
+        <button class="btn-ui m-auto" type="button">
+            <strong class="text-lg">ABOUT US</strong>
+            <div id="container-stars">
+                <div id="stars"></div>
+            </div>
+            <div id="glow">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </button>
+    </div>
+
+    <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-col px-5 py-2 justify-center items-center">
+            <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="Team Photo"
+                src="/images/logo.jpg">
+            <div class="w-full md:w-2/3 flex flex-col mb-16 itms-center text-center">
+                <h1 class="title-font sm:text-4X1 text-3X1 mb-4 font-medium text-gray-100">Our Team</h1>
+                <p class="mb-8 leading-relaxed text-gray-300">
+                    Innovate India
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer class="text-gray-300 body-font" style="background-color: black;">
+        <div
+            class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <img src="/images/logo.jpg" alt="Logo" style="height: 50px; width: 300px;" class="rounded">
+            </div>
+            <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+                <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-100 tracking-widest w-full text-sm mb-4">OUR PAGES</h2>
+                    <nav class="list-none mb-10 bg-black">
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/">Home</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/drones.html">Our Drones</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/service.html">Services</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/shop.html">Shop</a>
+                        </li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-100 tracking-widest text-sm mb-4">ABOUT US</h2>
+                    <nav class="list-none mb-10 bg-black">
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/blog.html">Blog</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/contact.html">Contact
+                                Us</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/about.html">About Us</a>
+                        </li>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                <p class="text-gray-500 text-sm text-center sm:text-left">© 2023 Innovate India —
+                    <a rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@Bhavans</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            alert("Logged out...")
+            location.reload();
+        }
+        let email = getCookie("email");
+        if (email != "") {
+            let temp = document.getElementById("dropdown-content-dynamic");
+            // for (let i = 0; i < temp.length; i++) {
+            temp.innerHTML = `<a onclick="deleteAllCookies()" href="#">Log out</a>`;
+            // }
+            // location.reload();
+        } else {
+            let temp = document.getElementById("dropdown-content-dynamic");
+            // for (let i = 0; i < temp.length; i++) {
+            temp.innerHTML = `<a href="/login.html">Log in</a>
+                            <a href="/signup.html">Sign Up</a>`;
+            // }
+            // location.reload();
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="index.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            "composerPlaceholder": "Enter your query",
+            "botConversationDescription": "This bot is to assist you",
+            "botId": "7e237e28-b00f-4f62-8ebf-62ce53706e12",
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+            "messagingUrl": "https://messaging.botpress.cloud",
+            "clientId": "7e237e28-b00f-4f62-8ebf-62ce53706e12",
+            "webhookId": "2983438f-351d-4487-b734-7107709bf126",
+            "lazySocket": true,
+            "themeName": "prism",
+            "botName": "Innovate India",
+            "avatarUrl": "https://png.pngtree.com/png-vector/20230225/ourmid/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png",
+            "stylesheet": "https://webchat-styler-css.botpress.app/prod/b4e925eb-39e8-454c-8035-70a1dee4c77a/v46270/style.css",
+            "frontendVersion": "v1",
+            "enableConversationDeletion": true,
+            "theme": "prism",
+            "themeColor": "#2563eb"
+        });
+    </script>
+</body>
+</html>
