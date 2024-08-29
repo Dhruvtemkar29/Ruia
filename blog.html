@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a162850df0.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container2 {
+            position: relative;
+            z-index: -1;
+            width: 100%;
+            margin: auto;
+        }
+
+        .btn-ui {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 13rem;
+            overflow: hidden;
+            height: 3rem;
+            background-size: 300% 300%;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+            transition: 0.5s;
+            animation: gradient_301 5s ease infinite;
+            border: double 4px transparent;
+            background-image: linear-gradient(#212121, #212121),
+                linear-gradient(137.48deg, #353329 10%, #474545 45%, #696374 67%,
+                    #726c6c 87%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            position: relative;
+            z-index: 0;
+        }
+
+        #container-stars {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: 0.5s;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+        }
+
+        strong {
+            z-index: 2;
+            font-family: 'Avalors Personal Use';
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            /* text-shadow: 0 0 4px white; */
+        }
+
+        #glow {
+            position: absolute;
+            display: flex;
+            width: 12rem;
+        }
+
+        .circle {
+            width: 100%;
+            height: 30px;
+            filter: blur(2rem);
+            animation: pulse_3011 4s infinite;
+            z-index: -1;
+        }
+
+        .circle:nth-of-type(1) {
+            background: black;
+        }
+
+        .circle:nth-of-type(2) {
+            background: black;
+        }
+
+        .btn-ui:hover #container-stars {
+            z-index: 1;
+            background-color: #212121;
+        }
+
+        .btn-ui:hover {
+            transform: scale(1.1)
+        }
+
+        .btn-ui:active {
+            /* border: double 4px #FE53BB; */
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: none;
+        }
+
+        /* .btn:active .circle {
+            background: #FE53BB;
+        } */
+
+        #stars {
+            position: relative;
+            background: transparent;
+            width: 200rem;
+            height: 200rem;
+        }
+
+        #stars::after {
+            content: "";
+            position: absolute;
+            top: -10rem;
+            left: -100rem;
+            width: 100%;
+            height: 100%;
+            animation: animStarRotate 90s linear infinite;
+        }
+
+        #stars::after {
+            background-image: radial-gradient(#ffffff 1px, transparent 1%);
+            background-size: 50px 50px;
+        }
+
+        #stars::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 170%;
+            height: 500%;
+            animation: animStar 60s linear infinite;
+        }
+
+        #stars::before {
+            background-image: radial-gradient(#ffffff 1px, transparent 1%);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        @keyframes animStar {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-135rem);
+            }
+        }
+
+        @keyframes animStarRotate {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes gradient_301 {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse_3011 {
+            0% {
+                transform: scale(0.75);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                transform: scale(0.75);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 99;
+            /* Sit on top */
+            padding-top: 50px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: black;
+            margin: auto;
+            color: white;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #dynamic-title {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="container1" style="background-color: black;">
+        <header class="header pt-1">
+            <img src="/images/logo.jpg" alt="Logo" class="logo text-gray-100 rounded m-2"
+                style="height: 50px; width: 250px;" />
+            <nav class="md:ml-auto block items-center justify-center navbar pt-3">
+                <ul class="navbar-list">
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/">Home </a>
+                        <div class="dropdown">
+                            <button class="dropbtn"><a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                            href="/service.html">Services </i></a></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                   
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/blog.html">Blog </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/contact.html">Contact Us </a>
+                    <a class="navbar-link mr-10 text-gray-100 hover:text-gray-300 no-underline font-sixe-25"
+                        href="/about.html">About Us</a>
+                </ul>
+            </nav>
+            <div class="mobile-navbar-btn">
+                <ion-icon name="menu-outline" class="mobile-nav-icon" style="color: white;"></ion-icon>
+                <ion-icon name="close-outline" class="mobile-nav-icon" style="color: white;"></ion-icon>
+            </div>
+        </header>
+    </div>
+    <div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-dark"><i class="fa-solid fa-up-long"></i></button>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" style="position: absolute; right: 15px; top: 0px;">&times;</span>
+            <img src="" alt="" id="dynamic-image" width="400px" class="m-auto">
+            <p id="dynamic-title" class="my-3 text-center"></p><br>
+            <p id="dynamic-text"></p>
+        </div>
+
+    </div>
+    <div class="container2 mt-4 cursor-default">
+        <button class="btn-ui w-full m-auto cursor-default" type="button">
+            <strong class="cursor-default text-lg">BLOGS</strong>
+            <div id="container-stars" class="cursor-default">
+                <div class="cursor-default" id="stars"></div>
+            </div>
+            <div id="glow" class="cursor-default">
+                <div class="circle cursor-default"></div>
+                <div class="circle cursor-default"></div>
+            </div>
+        </button>
+    </div>
+    <div class="container container3 mt-3">
+        <p class="text-center text-white">Note:- If you want to add your blog you can <a href="#AddBlog">Click here</a>
+        </p>
+    </div>
+    <section class="text-gray-600 body-font">
+        <div class="container py-24 mx-auto">
+            <div class="flex flex-wrap -m-4" id="dynamic-blog">
+
+            </div>
+        </div>
+    </section>
+    <div class="container5 py-10" id="AddBlog">
+        <div
+            class="max-w-md mx-auto relative overflow-hidden z-10 bg-gray-800 p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-600 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-xl after:top-24 after:-right-12">
+            <h2 class="text-2xl font-bold text-white mb-6">Enter Your Blog</h2>
+
+            <form id="form-file-input">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300" for="name">Full Name</label>
+                    <input class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white" id="name"
+                        type="text" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300" for="email">Email Address</label>
+                    <input class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white" name="email"
+                        id="email" type="email" />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300" for="name">Blog Title</label>
+                    <input class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white" id="title"
+                        name="title" type="text" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300" for="blog">Blog Description</label>
+                    <textarea class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white" rows="3"
+                        name="description" id="blog"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300" for="blog">Blog Image</label>
+                    <input type="file" name="blog_img" id="blog_image" class=" text-gray-300" accept="image/*">
+                </div>
+            </form>
+            <button type="submit"
+                class="bg-gradient-to-r from-purple-600 via-purple-400 to-blue-500 text-black px-4 py-2 font-bold rounded-md hover:opacity-50"
+                onclick="submitBlog()">Publish your Blog</button>
+        </div>
+
+    </div>
+    <footer class="text-gray-300 body-font" style="background-color: black;">
+        <div
+            class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <img src="/images/logo.jpg" alt="Logo" style="height: 50px; width: 300px;" class="rounded">
+            </div>
+            <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+                <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-100 tracking-widest w-full text-sm mb-4">OUR PAGES</h2>
+                    <nav class="list-none mb-10 bg-black">
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/">Home</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/drones.html">Our Blogs</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/service.html">Services</a>
+                        </li>
+                      
+                    </nav>
+                </div>
+                <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-100 tracking-widest text-sm mb-4">ABOUT US</h2>
+                    <nav class="list-none mb-10 bg-black">
+                        <li class="mb-2">
+                            <!-- <a class="text-gray-600 hover:text-gray-500 no-underline"
+                                href="/blog.html">Blog</a> -->
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/contact.html">Contact
+                                Us</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-gray-600 hover:text-gray-500 no-underline" href="/about.html">About Us</a>
+                        </li>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                <p class="text-gray-500 text-sm text-center sm:text-left">© 2023 AeroTech Drones —
+                    <a rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@Bhavans</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="index.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        fetch('http://localhost:3100/getBlogData')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                let markup = "";
+                for (let i = 0; i < data.length; i++) {
+                    markup = markup + `
+                    <div class="p-2 md:w-1/3 w-full">
+              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="${data[i].blog_image}" alt="blog">
+                <div class="p-2 bg-black">
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3 text-white">${data[i].blog_title}</h1>
+                  <div class="flex items-center flex-wrap flex-row justify-between">
+                    <button class="myBtn btn btn-dark" onclick="displayModal('${data[i].blog_description}','${data[i].blog_title}','${data[i].blog_image}')">Read Blog</button>
+                    <div class="flex justify-left p-2">
+                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>${data[i].blog_views}
+                    </span>
+                    <span class="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                        <i class="fa-regular pr-1 fa-clock"></i>${data[i].blog_time}
+                    </span>
+                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>${data[i].blog_comments}
+                    </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`
+            document.getElementById("dynamic-blog").innerHTML = markup;
+                }
+            })
+            .catch(err=>console.log(err))
+    </script>
+    <script>
+        const myTimeout = setTimeout(checkCookie, 2000);
+        function submitBlog() {
+            let emailc = getCookie("email");
+            if (emailc) {
+                const form = document.getElementById("form-file-input");
+                const fd = new FormData(form);
+                console.log(fd);
+                let blog = document.getElementById("blog").value;
+                let title = document.getElementById("title").value;
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let blog_image = document.getElementById("blog_image").value;
+                if(!ValidateEmail(email)) {
+                    alert("Please enter a valid email address");
+                    return;
+                }
+                if (name.length < 3) {
+                    alert("Please enter a valid name");
+                    return;
+                }
+                sendEmail(email,name,title);
+                fetch("http://localhost:3100/addBlog",{
+                    method: "POST",
+                    body: fd
+                })
+                alert("Your blog is added")
+            }
+            else {
+                alert("Please sign in to publish a blog");
+            }
+        }
+        function ValidateEmail(input) {
+            let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.match(validRegex)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function checkCookie() {
+            let email = getCookie("email");
+            if (email != "") {
+                
+            } else {
+                let btn_arr = document.getElementsByClassName("btn-disable-flag");
+                for (let i = 0; i < btn_arr.length; i++) {
+                    btn_arr[i].classList.add("btn-disable");
+                }
+            }
+        }
+    </script>
+    <script>
+        let modal = document.getElementById("myModal");
+        let btn = document.getElementsByClassName("myBtn");
+        let span = document.getElementsByClassName("close")[0];
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].onclick = function() {
+                btn[i].onclick = function() {
+                    modal.style.display = "block";
+                }
+            }
+        }
+        function displayModal(str, title, img) {
+            modal.style.display = "block";
+            document.getElementById("dynamic-text").innerText = str;
+            document.getElementById("dynamic-image").innerText = img;
+            document.getElementById("dynamic-title").innerText = title;
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function showDescription(id) {
+            fetch('http://localhost:3100/getBlogDataUsingId')
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    let markup = ""
+                    for (let i = 0; i < data.length; i++) {
+                        markup = markup + ``
+                        document.getElementById("dynamic-blog").innerHTML = markup;
+                    }
+                })
+                .catch(error => console.log(error))
+        }
+    </script>
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            alert("Logged out...")
+            location.reload();
+        }
+        let email = getCookie("email");
+        if (email != "") {
+            let temp = document.getElementById("dropdown-content-dynamic");
+            // for (let i = 0; i < temp.length; i++) {
+            temp.innerHTML = `<a onclick="deleteAllCookies()" href="#">Log out</a>`;
+            // }
+            // location.reload();
+        } else {
+            let temp = document.getElementById("dropdown-content-dynamic");
+            // for (let i = 0; i < temp.length; i++) {
+            temp.innerHTML = `<a href="/login.html">Log in</a>
+                            <a href="/signup.html">Sign Up</a>`;
+            // }
+            // location.reload();
+        }
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            "composerPlaceholder": "Enter your query",
+            "botConversationDescription": "This bot is to assist you",
+            "botId": "7e237e28-b00f-4f62-8ebf-62ce53706e12",
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+            "messagingUrl": "https://messaging.botpress.cloud",
+            "clientId": "7e237e28-b00f-4f62-8ebf-62ce53706e12",
+            "webhookId": "2983438f-351d-4487-b734-7107709bf126",
+            "lazySocket": true,
+            "themeName": "prism",
+            "botName": "Innovate India",
+            "avatarUrl": "https://png.pngtree.com/png-vector/20230225/ourmid/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png",
+            "stylesheet": "https://webchat-styler-css.botpress.app/prod/b4e925eb-39e8-454c-8035-70a1dee4c77a/v46270/style.css",
+            "frontendVersion": "v1",
+            "enableConversationDeletion": true,
+            "theme": "prism",
+            "themeColor": "#2563eb"
+        });
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(email,name,blog_title) {
+            let msg = "Your Blog is published <br><br>Name: " + name + "<br>Blog Title: " + blog_title + "<br><br>Checkout your popular blog<br><br>Thank You.";
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "jdarshan535@gmail.com",
+                Password: "5AD666C38FF8083C203B9A079C5DD5B65388",
+                To: email,
+                From: "jdarshan535@gmail.com",
+                Subject: "Your blog is added",
+                Body: msg
+            }).then(
+                message => {
+                    if (message == 'OK') {
+                        console.log("Your mail is recorded. We will contact you shortly")
+                    } else {
+                        console.log(message)
+                    }
+                }
+            );
+        }
+    </script>
+</body>
+</html>
